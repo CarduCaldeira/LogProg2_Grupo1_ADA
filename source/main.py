@@ -1,4 +1,5 @@
 import pyfiglet  
+import datetime
 
 def main():
     
@@ -60,11 +61,33 @@ def cria_registro():
         execute_deposito()
     elif registro =='2':
         execute_deposito()
+    elif registro == '3':
+        execute_investimento()
     else:
-        execute_deposito()
+        cria_registro   
+
+
+def execute_deposito():
+    valor = float(input("Informe o valor do depósito: "))
+    data = datetime.datetime.now()
+    registros.append({"tipo": "receita", "valor": valor, "data": data})
+
+def execute_despesa():
+    valor = float(input("Informe o valor da despesa: "))
+    data = datetime.datetime.now()
+    registros.append({"tipo": "despesa", "valor": -valor, "data": data})
+
+ def execute_investimento():
+    valor = float(input("Informe o valor do investimento: "))
+    taxa_juros = float(input("Informe a taxa de juros do investimento: "))
+    data = datetime.datetime.now()
+    registros.append({"tipo": "investimento", "valor": valor, "taxa_juros": taxa_juros, "data": data})   
 
 def le_registro():
-    pass
+    tipo = input("Informe o tipo de registro que deseja ler (despesa, receita, investimento): ")
+    for registro in registros:
+        if registro["tipo"] == tipo:
+            print(registro)
 
 def atualiza_registro():
     pass
