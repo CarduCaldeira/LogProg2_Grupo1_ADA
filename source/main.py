@@ -1,4 +1,11 @@
-import pyfiglet  
+import pyfiglet 
+from source.cria_registro import cria_registro
+from source.le_registro import le_registro
+from source.deleta_registro import deleta_registro
+from source.atualiza_registro import atualiza_registro
+from source.mostra_features import mostra_features
+from source.exporta_relatorio import exporta_relatorio 
+
 
 def main():
     
@@ -17,66 +24,44 @@ def main():
                         "Para criar um registro digite:                             1 \n"
                         "Para ler um registro digite:                               2 \n"
                         "Para deletar um registro digite:                           3 \n"
-                        "Para obter informações sobre seus investimentos digite :   4 \n"
-                        "Para exportar um relatorio  :                              5 \n"
-                        "Para sair digite:                                          6 \n")
+                        "Para atualizar um registro digite:                         4 \n"
+                        "Para obter informações sobre seus investimentos digite :   5 \n"
+                        "Para exportar um relatorio  :                              6 \n"
+                        "Para sair digite:                                          7 \n")
 
-        if operacao == '6':
+        if operacao == '7':
+            
             rodar_sistema = False
+            continue
 
-        elif operacao in ['1','2','3','4','5']:
+        elif operacao == '1':
             
-            executa_operacao()
+            cria_registro()
         
+        elif operacao == '2':
+            
+            le_registro()
+
+        elif operacao == '3':
+
+            deleta_registro()
+
+        elif operacao == '4':
+            
+            atualiza_registro()
+     
+        elif operacao == '5':
+            
+            mostra_features()
+
+        elif operacao == '6':
+            
+            exporta_relatorio()
+     
         else:
             print("="*28)
             print("Opção Invalida!")
             print("="*28)
-
-
-   
-def cria_registro():
-
-    repeat_question = True
-
-    while repeat_question:
-
-        registro = input("Informe a operação desejada: \n" 
-                      "Para deposito digite:     1 \n"
-                      "Para deposito digite:     2 \n"
-                      "Para investimento digite: 3 \n"
-                      "Para cancelar:            4 \n")
-        
-        if registro not in ['1','2','3']:
-            
-            print("="*28)
-            print("Opção Invalida!")
-            print("="*28)
-
-        else:
-            repeat_question = False
-            
-    if registro =='1':
-        execute_deposito()
-    elif registro =='2':
-        execute_deposito()
-    else:
-        execute_deposito()
-
-def le_registro():
-    pass
-
-def atualiza_registro():
-    pass
-
-def deleta_registro():
-    pass
-
-def mostra_features():
-    pass
-
-def exporta_relatorio():
-    pass
 
 
 if __name__ == "__main__":
