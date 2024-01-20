@@ -20,14 +20,15 @@ def main():
 
     while rodar_sistema:
 
-        operacao = input("Informe o tipo de procedimento que deseja realizar: \n" 
-                        "Para criar um registro digite:                             1 \n"
-                        "Para ler um registro digite:                               2 \n"
-                        "Para deletar um registro digite:                           3 \n"
-                        "Para atualizar um registro digite:                         4 \n"
-                        "Para obter informações sobre seus investimentos digite :   5 \n"
-                        "Para exportar um relatorio  :                              6 \n"
-                        "Para sair digite:                                          7 \n")
+        operacao = input('''Digite a opção que deseja realizar:
+                         
+                        [1] CRIAR UM REGISTRO                             
+                        [2] LER UM REGISTRO                               
+                        [3] DELETAR UM REGISTRO                           
+                        [4] ATUALIZAR UM REGISTRO                         
+                        [5] INFORMAÇÕES SOBRE SEUS INVESTIMETOS   
+                        [6] EXPORTAR RELATÓRIO                              
+                        [7] SAIR  ''')                                        
 
         if operacao == '7':
             
