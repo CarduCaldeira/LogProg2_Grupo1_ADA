@@ -1,7 +1,8 @@
 # Função para deletar registros
-def deleta_registros():
+def deleta_registro():
   # Obter o ID do registro a ser deletado
-  linhas[id] = f"{data},{registro},{valor}\n"
+  linhas[id] = f"{data},{registros},{valor}\n"
+  
   id = int(input("Digite o registro a ser deletado: "))
 
   # Deletar o registro do arquivo
