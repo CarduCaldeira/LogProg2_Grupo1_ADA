@@ -1,11 +1,4 @@
-import pyfiglet 
-from cria_registro import cria_registro
-from le_registro import le_registro
-from deleta_registro import deleta_registros
-from atualiza_registro import atualiza_registro
-from mostra_features import mostra_features
-from exporta_relatorio import exporta_relatorio
-from cria_registro_receita import cria_registro_receita
+import pyfiglet  
 
 def main():
     
@@ -65,6 +58,51 @@ def main():
             print("="*28)
             print("Opção Invalida!")
             print("="*28)
+
+
+   
+def cria_registro():
+
+    repeat_question = True
+
+    while repeat_question:
+
+        registro = input("Informe a operação desejada: \n" 
+                      "Para deposito digite:     1 \n"
+                      "Para deposito digite:     2 \n"
+                      "Para investimento digite: 3 \n"
+                      "Para cancelar:            4 \n")
+        
+        if registro not in ['1','2','3']:
+            
+            print("="*28)
+            print("Opção Invalida!")
+            print("="*28)
+
+        else:
+            repeat_question = False
+            
+    if registro =='1':
+        execute_deposito()
+    elif registro =='2':
+        execute_deposito()
+    else:
+        execute_deposito()
+
+def le_registro():
+    pass
+
+def atualiza_registro():
+    pass
+
+def deleta_registro():
+    pass
+
+def mostra_features():
+    pass
+
+def exporta_relatorio():
+    pass
 
 
 if __name__ == "__main__":
