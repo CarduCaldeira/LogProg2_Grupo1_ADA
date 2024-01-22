@@ -5,6 +5,7 @@ from deleta_registro import deleta_registro
 from atualiza_registro import atualiza_registro
 from mostra_features import mostra_features
 from exporta_relatorio import exporta_relatorio 
+from encerrar_programa import encerrar_programa
 
 
 def main():
@@ -36,11 +37,8 @@ def main():
                 break
             else:
                 print(
-                    f"Entrada inválida. Você tem mais {3 - tentativas}{'tentativa' if tentativas == 2 else 'tentativas'}.")
+                    f"Entrada inválida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
 
-        if operacao == '7':
-            
-            exit()
 
         elif operacao == '1':
             
@@ -66,11 +64,10 @@ def main():
             
             exporta_relatorio()
      
-        else:
-            print("="*28)
-            print("Opção Invalida!")
-            print("="*28)
-
+        elif operacao == '7':
+            
+            encerrar_programa()
+            break
 
 if __name__ == "__main__":
     main()
