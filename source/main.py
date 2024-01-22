@@ -9,31 +9,38 @@ from exporta_relatorio import exporta_relatorio
 
 def main():
     
-    rodar_sistema = True
-
     f = pyfiglet.Figlet(font='big')
     print(f.renderText('Bem Vindo ao sistema da Ceu!'))
     print(f'{"="*70} \n'
-          f'{"-"*70} \n'
-          f'{"="*70} \n')
-    
+        f'{"-"*70} \n'
+        f'{"="*70} \n')
 
-    while rodar_sistema:
+    tentativas = 0
 
+    while True:
         operacao = input('''Digite a opção que deseja realizar:
-                         
+                            
                         [1] CRIAR UM REGISTRO                             
                         [2] LER UM REGISTRO                               
-                        [3] DELETAR UM REGISTRO                           
-                        [4] ATUALIZAR UM REGISTRO                         
+                        [3] ATUALIZAR UM REGISTRO                         
+                        [4] DELETAR UM REGISTRO                           
                         [5] INFORMAÇÕES SOBRE SEUS INVESTIMETOS   
                         [6] EXPORTAR RELATÓRIO                              
-                        [7] SAIR  ''')                                        
+                        [7] SAIR  ''')
+
+        if not operacao.isnumeric() or int(operacao) not in range(1, 8):
+            tentativas += 1
+
+            if tentativas == 3:
+                print("Você atingiu o número máximo de tentativas. Encerrando o programa.")
+                break
+            else:
+                print(
+                    f"Entrada inválida. Você tem mais {3 - tentativas}{'tentativa' if tentativas == 2 else 'tentativas'}.")
 
         if operacao == '7':
             
-            rodar_sistema = False
-            continue
+            exit()
 
         elif operacao == '1':
             
