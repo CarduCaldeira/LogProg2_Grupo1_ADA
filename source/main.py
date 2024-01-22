@@ -1,10 +1,10 @@
 import pyfiglet 
-from source.cria_registro import cria_registro
-from source.le_registro import le_registro
-from source.deleta_registro import deleta_registro
-from source.atualiza_registro import atualiza_registro
-from source.mostra_features import mostra_features
-from source.exporta_relatorio import exporta_relatorio 
+from cria_registro import cria_registro
+from le_registro import le_registro
+from deleta_registro import deleta_registro
+from atualiza_registro import atualiza_registro
+from mostra_features import mostra_features
+from exporta_relatorio import exporta_relatorio 
 
 
 def main():

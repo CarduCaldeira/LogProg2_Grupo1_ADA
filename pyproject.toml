@@ -10,6 +10,12 @@ python = "^3.10"
 pyfiglet = "^1.0.2"
 
 
+[tool.poetry.group.dev.dependencies]
+mkdocs = "^1.5.3"
+pymdown-extensions = "^10.7"
+mkdocs-material = "^9.5.4"
+mkdocstrings = {extras = ["python"], version = "^0.24.0"}
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
