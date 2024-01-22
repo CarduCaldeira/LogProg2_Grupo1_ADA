@@ -1,8 +1,6 @@
-
 import csv
 from datetime import datetime
 import os
-from cria_registro_receita import cria_registro_receita
 
 def cria_registro():
     """
@@ -34,7 +32,7 @@ def cria_registro():
 
         elif operacao == '2':
             
-            cria_registro_receita()
+            executa_receita()
 
         elif operacao == '3':
             
@@ -53,6 +51,21 @@ def executa_despesa():
     data = determina_data()
         
     registro = ['despesa', -despesa, data, -1]
+    salva_registro(registro)
+
+def executa_receita():
+    """
+    Obtem as informacoes referentes a operacao receita
+    e salva o registro com a funcao salva_registro
+    """
+    
+    mensagem = "Informe o valor da receita"
+    mensagem_erro = "Entrada invalida, informe um valor da numerico"
+    receita = valida_digito(mensagem, mensagem_erro)
+
+    data = determina_data()
+
+    registro = ['receita', receita, data, -1]
     salva_registro(registro)
 
 def  executa_investimento():
