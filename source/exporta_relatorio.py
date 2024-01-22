@@ -12,4 +12,8 @@ def exporta_relatorio():
 
         print(f"Relatório exportado com sucesso para {nome_arquivo_exportacao}.csv")
     except FileNotFoundError:
-        print("Nenhum registro encontrado.")
+        print("Nenhum registro encontrado.") 
+
+
+
+        
