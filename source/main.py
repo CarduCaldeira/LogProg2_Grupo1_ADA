@@ -1,11 +1,11 @@
 import pyfiglet 
-from source.cria_registro import cria_registro
-from source.le_registro import le_registro
-from source.deleta_registro import deleta_registro
-from source.atualiza_registro import atualiza_registro
-from source.mostra_features import mostra_features
-from source.exporta_relatorio import exporta_relatorio 
-
+from cria_registro import cria_registro
+from le_registro import le_registro
+from deleta_registro import deleta_registros
+from atualiza_registro import atualiza_registro
+from mostra_features import mostra_features
+from exporta_relatorio import exporta_relatorio
+from cria_registro_receita import cria_registro_receita
 
 def main():
     
@@ -28,7 +28,9 @@ def main():
                         [4] ATUALIZAR UM REGISTRO                         
                         [5] INFORMAÇÕES SOBRE SEUS INVESTIMETOS   
                         [6] EXPORTAR RELATÓRIO                              
-                        [7] SAIR  ''')                                        
+                        [7] SAIR  
+                        
+                         Insira o número da opção desejada: ''')                                        
 
         if operacao == '7':
             
