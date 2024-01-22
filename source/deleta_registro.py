@@ -1,5 +1,5 @@
 # Função para deletar registros
-def deleta_registros():
+def deleta_registro():
   # Obter o ID do registro a ser deletado
   linhas[id] = f"{data},{registros},{valor}\n"
   
