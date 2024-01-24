@@ -35,7 +35,7 @@ def cria_registro():
 
         elif operacao == '2':
             
-            cria_registro_receita()
+            executa_receita()
 
         elif operacao == '3':
             
