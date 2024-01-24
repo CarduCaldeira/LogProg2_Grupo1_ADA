@@ -27,17 +27,9 @@ def main():
                         [4] DELETAR UM REGISTRO                           
                         [5] INFORMAÇÕES SOBRE SEUS INVESTIMETOS   
                         [6] EXPORTAR RELATÓRIO                              
-                        [7] SAIR  ''')
-
-        if not operacao.isnumeric() or int(operacao) not in range(1, 8):
-            tentativas += 1
-
-            if tentativas == 3:
-                print("Você atingiu o número máximo de tentativas. Encerrando o programa.")
-                break
-            else:
-                print(
-                    f"Entrada inválida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
+                        [7] SAIR  
+                        
+                         Insira o número da opção desejada: ''')                                        
 
 
         elif operacao == '1':
@@ -68,6 +60,22 @@ def main():
             
             encerrar_programa()
             break
+
+def le_registro():
+    pass
+
+def atualiza_registro():
+    pass
+
+def deleta_registro():
+    pass
+
+def mostra_features():
+    pass
+
+def exporta_relatorio():
+    pass
+
 
 if __name__ == "__main__":
     main()
