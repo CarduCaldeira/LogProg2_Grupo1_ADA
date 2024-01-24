@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 
 #função será destinada para armazenar apenas os registros de receita.
+
 def cria_registro_receita():
     """
     Obtem as informacoes referentes a operacao receita

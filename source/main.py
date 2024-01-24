@@ -1,12 +1,5 @@
-import pyfiglet 
-from cria_registro import cria_registro
-from le_registro import le_registro
-from deleta_registro import deleta_registros
-from atualiza_registro import atualiza_registro
-from mostra_features import mostra_features
-from exporta_relatorio import exporta_relatorio
-from cria_registro_receita import cria_registro_receita
-
+import pyfiglet
+from cria_registro import cria_registro 
 def main():
     
     rodar_sistema = True
@@ -65,6 +58,22 @@ def main():
             print("="*28)
             print("Opção Invalida!")
             print("="*28)
+
+
+def le_registro():
+    pass
+
+def atualiza_registro():
+    pass
+
+def deleta_registro():
+    pass
+
+def mostra_features():
+    pass
+
+def exporta_relatorio():
+    pass
 
 
 if __name__ == "__main__":
