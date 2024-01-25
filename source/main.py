@@ -1,4 +1,6 @@
 import pyfiglet
+import os
+import time
 from cria_registro import cria_registro
 from le_registro import le_registro
 from deleta_registro import deleta_registro
@@ -17,52 +19,54 @@ def cabecalho():
 
 
 def main():
+
     cabecalho()
+
+    menu = {
+        '1': cria_registro,
+        '2': le_registro,
+        '3': atualiza_registro,
+        '4': deleta_registro,
+        '5': mostra_features,
+        '6': exporta_relatorio,
+        '7': encerrar_programa
+    }
 
     tentativas = 0
 
-    aux = {
-        '1': cria_registro(),
-        '2': le_registro(),
-        '3': atualiza_registro(),
-        '4': deleta_registro(),
-        '5': mostra_features(),
-        '6': exporta_relatorio(),
-        '7': encerrar_programa()
-    }
-
     while True:
-        operacao = input('''
-                            
-        Digite a opção que deseja realizar:
-            
-    [1] CRIAR UM REGISTRO                             
-    [2] LER UM REGISTRO                               
-    [3] ATUALIZAR UM REGISTRO                         
-    [4] DELETAR UM REGISTRO                           
-    [5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS   
-    [6] EXPORTAR RELATÓRIO                              
-    [7] SAIR  
+        operacao = input('''                         
+    DIGITE UMA DAS OPÇÕES ABAIXO:
+    
+    [1] CRIAR UM REGISTRO
+    [2] LER UM REGISTRO
+    [3] ATUALIZAR UM REGISTRO
+    [4] DELETAR UM REGISTRO
+    [5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS
+    [6] EXPORTAR RELATÓRIO
+    [7] SAIR
         
-    Insira o número da opção desejada: ''')
+     ''')
 
         try:
-
-            if operacao in aux.keys():
-                aux.get(operacao)
+            if operacao in menu:
+                menu[operacao]()
+                break
 
             else:
                 tentativas += 1
 
                 if tentativas == 3:
                     print(
-                        "Você atingiu o número máximo de tentativas. Encerrando o programa.")
+                        "Você atingiu o número máximo de tentativas.", end='\n')
                     encerrar_programa()
                 else:
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     print(
-                        f"Entrada inválida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
-                    break
-
+                        f"\n'{operacao}' Não é uma entrada válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.", end='\n')
+                    time.sleep(3)
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    cabecalho()
         except Exception as e:
             print(f"Ocorreu um erro: {e}")
 
