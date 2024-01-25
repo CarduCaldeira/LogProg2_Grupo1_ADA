@@ -10,17 +10,21 @@ from exporta_relatorio import exporta_relatorio
 from encerrar_programa import encerrar_programa
 
 
-def cabecalho():
-    f = pyfiglet.Figlet(font='big')
-    print(f.renderText('Bem Vindo ao sistema da Ceu!'))
+def tracos():
     print(f'{"="*70} \n'
           f'{"-"*70} \n'
           f'{"="*70} \n')
 
 
+def tela_inicial():
+    f = pyfiglet.Figlet(font='big')
+    print(f.renderText('Bem Vindo ao Sistema da Ceu!'))
+    tracos()
+
+
 def main():
 
-    cabecalho()
+    tela_inicial()
 
     menu = {
         '1': cria_registro,
@@ -50,6 +54,8 @@ def main():
 
         try:
             if operacao in menu:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                tracos()
                 menu[operacao]()
                 break
 
@@ -57,6 +63,7 @@ def main():
                 tentativas += 1
 
                 if tentativas == 3:
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     print(
                         "Você atingiu o número máximo de tentativas.", end='\n')
                     encerrar_programa()
@@ -64,9 +71,9 @@ def main():
                     os.system('cls' if os.name == 'nt' else 'clear')
                     print(
                         f"\n'{operacao}' Não é uma entrada válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.", end='\n')
-                    time.sleep(3)
+                    time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')
-                    cabecalho()
+                    tela_inicial()
         except Exception as e:
             print(f"Ocorreu um erro: {e}")
 
