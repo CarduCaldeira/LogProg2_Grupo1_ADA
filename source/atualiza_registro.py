@@ -1,4 +1,4 @@
-def atualizar_registro():
+def atualiza_registro():
     # Obter o ID do registro a ser atualizado
     id = int(input("Digite o ID do registro a ser atualizado: "))
 
