@@ -1,3 +1,2 @@
-tipo_investimento,valor,tempo_investimento,lucro,datetime
-Tesouro Direto,145.0,12,14.586999999999989,24/01/2024
-CDBs,900.0,12,104.85000000000002,24/01/2024
+tipo_investimento,valor,tempo_investimento,lucro,datetime
+Fundo de Renda Fixa,1566.0,12,191.83500000000004,"(25, 1, 2024)"

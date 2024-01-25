@@ -58,18 +58,18 @@ def determina_data():
     data = datetime.now().date()
     return data.day, data.month, data.year
 
-def salva_registro_investimento(tipo_investimento, valor, tempo, lucro):
+def salva_registro_investimento(tipo_investimento, valor, tempo, lucro:list):
     if not os.path.isdir('../registros'):
         os.makedirs('../registros')
 
     if not os.path.isfile('../registros/investimentos.csv'):
-        with open('../registros/investimentos.csv', 'w') as file:
+        with open('../registros/investimentos.csv', 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["tipo_investimento", "valor", "tempo_investimento", "lucro", "datetime"])
 
-    with open('../registros/investimentos.csv','a') as file:
+    with open('../registros/investimentos.csv', 'a', newline='') as file:
         writer = csv.writer(file)
-        data = datetime.now().date()
+        data = determina_data()
         writer.writerow([tipo_investimento, valor, tempo, lucro, data])
     
     print(f"O registro do investimento foi salvo e o lucro do seu investimento em {tipo_investimento} será de R$ {lucro:.2f}")
