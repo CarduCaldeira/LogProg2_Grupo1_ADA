@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 from cria_registro_receita import cria_registro_receita
 from cria_registro_despesa import cria_registro_despesa
-
+from investimento import investimento
 
 def cria_registro():
     """
@@ -16,10 +16,10 @@ def cria_registro():
 
         operacao = input('''Digite a opção que deseja realizar:  \n"
                         
-                        [1] CRIAR UM REGISTRO                             
-                        [2] LER UM REGISTRO                               
-                        [3] ATUALIZAR UM REGISTRO                         
-                        [4] DELETAR UM REGISTRO 
+                        [1] DESPESA                             
+                        [2] RECEITA                               
+                        [3] INVESTIMENTO                         
+                        [4] CANCELAR 
                              
                              insira o número da opção desejada: ''')
         
@@ -42,7 +42,7 @@ def cria_registro():
 
         elif operacao == '3':
             
-            executa_investimento()
+            investimento()
 
 def  executa_investimento():
     """

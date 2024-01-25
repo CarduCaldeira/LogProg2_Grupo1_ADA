@@ -1,5 +1,6 @@
 def exporta_relatorio():
-    try:
+   pass
+   """ try:
         with open(ARQUIVO_REGISTROS_CSV, 'r', newline='') as arquivo_csv:
             registros = [linha.split(',') for linha in arquivo_csv.readlines()]
 
@@ -12,4 +13,4 @@ def exporta_relatorio():
 
         print(f"Relatório exportado com sucesso para {nome_arquivo_exportacao}.csv")
     except FileNotFoundError:
-        print("Nenhum registro encontrado.")
+        print("Nenhum registro encontrado.")"""

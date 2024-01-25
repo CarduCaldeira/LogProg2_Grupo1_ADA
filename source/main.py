@@ -32,7 +32,7 @@ def main():
                          Insira o número da opção desejada: ''')                                        
 
 
-        elif operacao == '1':
+        if operacao == '1':
             
             cria_registro()
         
