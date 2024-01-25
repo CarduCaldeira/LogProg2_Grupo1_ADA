@@ -10,6 +10,10 @@ from exporta_relatorio import exporta_relatorio
 from encerrar_programa import encerrar_programa
 
 
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def tracos():
     print(f'{"="*70} \n'
           f'{"-"*70} \n'
@@ -54,7 +58,7 @@ def main():
 
         try:
             if operacao in menu:
-                os.system('cls' if os.name == 'nt' else 'clear')
+                limpar_tela()
                 tracos()
                 menu[operacao]()
                 break
@@ -63,16 +67,14 @@ def main():
                 tentativas += 1
 
                 if tentativas == 3:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print(
-                        "Você atingiu o número máximo de tentativas.", end='\n')
+                    print("Você atingiu o número máximo de tentativas.")
                     encerrar_programa()
                 else:
-                    os.system('cls' if os.name == 'nt' else 'clear')
+                    limpar_tela()
                     print(
-                        f"\n'{operacao}' Não é uma entrada válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.", end='\n')
+                        f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
                     time.sleep(2)
-                    os.system('cls' if os.name == 'nt' else 'clear')
+                    limpar_tela()
                     tela_inicial()
         except Exception as e:
             print(f"Ocorreu um erro: {e}")
