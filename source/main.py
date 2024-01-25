@@ -20,7 +20,7 @@ def main():
 aux = {
     '1': cria_registro,
     '2': le_registro,
-    '3': atualiza_registro,
+    '3': atualizar_registro,
     '4': deleta_registro,
     '5': mostra_features,
     '6': exporta_relatorio,
@@ -87,4 +87,3 @@ def exporta_relatorio():
 if __name__ == "__main__":
     main()
     # %%
-    
