@@ -2,6 +2,7 @@ import csv
 from datetime import datetime
 import os
 
+
 def exporta_relatorio():
     registros = []
 
@@ -44,5 +45,3 @@ def exporta_relatorio():
             escritor_csv.writerow(registro)
 
     print("Relatório exportado para relatorio_exportado.csv com sucesso!")
-
-exporta_relatorio()
