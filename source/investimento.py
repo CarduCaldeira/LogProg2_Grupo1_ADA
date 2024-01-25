@@ -20,7 +20,8 @@ def investimento():
                         [3] Fundos de Renda Fixa: 12,25% a.a                        
                         [4] LCIs (Letras de Crédito Imobiliário): 8,99% a.a
                         [5] LCAs (Letras de Crédito do Agronegócio): 7,7% a.a
-                        [6] Poupança: 6,17% a.a  
+                        [6] Poupança: 6,17% a.a 
+                        [7] Cancelar
                                
                              insira o número da opção desejada: ''')
                         
@@ -48,7 +49,14 @@ def investimento():
         
             aplicacao_poupanca()
         
+        elif investimento == '7':
 
+            repeat_question = False
+            return
+
+def determina_data():
+    data = datetime.now().date()
+    return data.day, data.month, data.year
 
 def salva_registro_investimento(tipo_investimento, valor, tempo, lucro):
     if not os.path.isdir('../registros'):
@@ -61,7 +69,7 @@ def salva_registro_investimento(tipo_investimento, valor, tempo, lucro):
 
     with open('../registros/investimentos.csv','a') as file:
         writer = csv.writer(file)
-        data = datetime.now().strftime("%d/%m/%Y")
+        data = datetime.now().date()
         writer.writerow([tipo_investimento, valor, tempo, lucro, data])
     
     print(f"O registro do investimento foi salvo e o lucro do seu investimento em {tipo_investimento} será de R$ {lucro:.2f}")
