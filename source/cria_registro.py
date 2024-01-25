@@ -14,11 +14,14 @@ def cria_registro():
 
     while repeat_question:
 
-        operacao = input("Informe a operação desejada: \n" 
-                      "Para despesa digite:     1 \n"
-                      "Para receita digite:     2 \n"
-                      "Para investimento digite: 3 \n"
-                      "Para cancelar:            4 \n")
+        operacao = input('''Digite a opção que deseja realizar:  \n"
+                        
+                        [1] CRIAR UM REGISTRO                             
+                        [2] LER UM REGISTRO                               
+                        [3] ATUALIZAR UM REGISTRO                         
+                        [4] DELETAR UM REGISTRO 
+                             
+                             insira o número da opção desejada: ''')
         
         if operacao not in ['1','2','3','4']:
 

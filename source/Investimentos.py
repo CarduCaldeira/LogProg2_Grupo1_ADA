@@ -6,16 +6,23 @@ import os
 
 def investimento():
     """
-    Tela inicial da selsção de investimentos
+    Tela inicial da seleção de investimentos
     """
 
     repeat_question = True
 
     while repeat_question:
 
-        investimento = input("informe o tipo de investimento desejado: \n"
+        investimento = input('''informe o tipo de investimento desejado: \n"
                         
-                    "1: Tesouro Direto 10,06% a.a \n ")
+                        [1] Tesouro Direto: 10,06% a.a                             
+                        [2] CDBs (Certificados de Depósito Bancário): 11,65% a.a                            
+                        [3] Fundos de Renda Fixa: 12,25% a.a                        
+                        [4] LCIs (Letras de Crédito Imobiliário): 8,99% a.a
+                        [5] LCAs (Letras de Crédito do Agronegócio): 7,7% a.a
+                        [6] Poupança: 6,17% a.a  
+                               
+                             insira o número da opção desejada: ''')
                         
         
 
