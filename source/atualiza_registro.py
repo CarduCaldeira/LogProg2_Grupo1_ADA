@@ -73,7 +73,7 @@ def get_id(acao_realizada):
     return id
 
 
-def atualiza_registro():
+def atualiza_registros():
   
     id = get_id()
     
@@ -82,18 +82,10 @@ def atualiza_registro():
 
     # Obter o novo registro
     tipo = input("Digite o novo tipo de registro (despesa, receita, investimento): ")
-    # Obter o novo registro
-    tipo = input(
-        "Digite o novo tipo de registro (despesa, receita, investimento): ")
 
     # Obter o novo valor do registro
     valor = float(input("Digite o novo valor do registro: "))
-    # Obter o novo valor do registro
-    valor = float(input("Digite o novo valor do registro: "))
 
-    # Se o tipo de registro for despesa, multiplicar o valor por -1
-    if tipo == "despesa":
-        valor *= -1
     # Se o tipo de registro for despesa, multiplicar o valor por -1
     if tipo == "despesa":
         valor *= -1
@@ -111,9 +103,6 @@ def atualiza_registro():
     # Atualizar o registro
     linhas[id] = f"{data},{tipo},{valor}\n"
 
-    # Salvar o arquivo
-    with open("registros.csv", "w") as arquivo:
-        arquivo.writelines(linhas)
     # Salvar o arquivo
     with open("registros.csv", "w") as arquivo:
         arquivo.writelines(linhas)
