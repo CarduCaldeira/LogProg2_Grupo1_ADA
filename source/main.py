@@ -15,9 +15,11 @@ def cabecalho():
           f'{"-"*70} \n'
           f'{"="*70} \n')
 
+
 def main():
     cabecalho()
 
+    tentativas = 0
 
     aux = {
         '1': cria_registro(),
@@ -28,8 +30,6 @@ def main():
         '6': exporta_relatorio(),
         '7': encerrar_programa()
     }
-
-    tentativas = 0
 
     while True:
         operacao = input('''
@@ -89,4 +89,3 @@ def exporta_relatorio():
 
 if __name__ == "__main__":
     main()
-    # %%
