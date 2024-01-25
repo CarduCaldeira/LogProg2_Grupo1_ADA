@@ -36,15 +36,15 @@ def main():
                             
         Digite a opção que deseja realizar:
             
-        [1] CRIAR UM REGISTRO                             
-        [2] LER UM REGISTRO                               
-        [3] ATUALIZAR UM REGISTRO                         
-        [4] DELETAR UM REGISTRO                           
-        [5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS   
-        [6] EXPORTAR RELATÓRIO                              
-        [7] SAIR  
+    [1] CRIAR UM REGISTRO                             
+    [2] LER UM REGISTRO                               
+    [3] ATUALIZAR UM REGISTRO                         
+    [4] DELETAR UM REGISTRO                           
+    [5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS   
+    [6] EXPORTAR RELATÓRIO                              
+    [7] SAIR  
         
-        Insira o número da opção desejada: ''')
+    Insira o número da opção desejada: ''')
 
         try:
 
