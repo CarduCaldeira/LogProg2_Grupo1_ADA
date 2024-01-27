@@ -36,7 +36,7 @@ def exporta_relatorio():
     registros.sort(key=lambda x: datetime.strptime(x[3], "%d/%m/%Y"))
 
     # Exporta registros para relatorio_exportado.csv
-    with open('relatorio_exportado.csv', 'w', newline='') as arquivo_exportado:
+    with open('../registros/relatorio_exportado.csv', 'w', newline='') as arquivo_exportado:
         escritor_csv = csv.writer(arquivo_exportado, delimiter=',')
         escritor_csv.writerow(['Tipo', 'Valor', 'Dia', 'Mês', 'Ano'])
 
