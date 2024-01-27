@@ -12,7 +12,7 @@ def main():
 
     tela_inicial()
 
-    menu = {
+    operacoes = {
         '1': cria_registro,
         '2': le_registro,
         '3': atualiza_registro,
@@ -39,10 +39,10 @@ def main():
      ''')
 
         try:
-            if operacao in menu:
+            if operacao in operacoes:
                 limpar_tela()
                 tracos()
-                menu[operacao]()
+                operacoes[operacao]()
                 break
 
             else:
