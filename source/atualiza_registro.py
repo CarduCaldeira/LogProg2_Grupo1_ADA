@@ -119,8 +119,8 @@ def atualiza_registros():
 
     if id_tuple:
         id, lista_registros =id_tuple
-        registro = #chama a função que pega o novo registro e retorna a lista com as informaçoes
-        lista_registros[id] = registro
+        #registro = chama a função que pega o novo registro e retorna a lista com as informaçoes
+        #lista_registros[id] = registro
         print("Registro atualizado")
 
 
