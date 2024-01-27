@@ -1,6 +1,10 @@
 import os
-import time
+<<<<<<< HEAD
 import datetime
+=======
+import time
+from datetime import datetime
+>>>>>>> 203b31edb330e322ea5f1512cd7560273ccadfd4
 import pyfiglet
 
 
