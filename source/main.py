@@ -11,20 +11,20 @@ from encerrar_programa import encerrar_programa
 
 
 def main():
-
-    operacao = tela_inicial()
     
     operacoes = {
-        '1': cria_registro,
-        '2': le_registro,
-        '3': atualizar_registro,
-        '4': deletar_registro,
-        '5': mostra_features,
-        '6': exporta_relatorio,
-        '7': encerrar_programa
+        1: cria_registro,
+        2: le_registro,
+        3: atualizar_registro,
+        4: deletar_registro,
+        5: mostra_features,
+        6: exporta_relatorio,
+        7: encerrar_programa
     }
 
     tentativas = 0
+    
+    operacao = tela_inicial()
     
     try:
         if operacao in operacoes:
