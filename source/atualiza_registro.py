@@ -1,9 +1,9 @@
-import datetime
 import os
 import csv
-from utils import valida_data, determina_data
+import datetime
+from utils import valida_data, determina_data, limpar_tela, tracos
 
-def le_arquivo(path:str):
+def ler_arquivo(path:str) -> list:
 
     """Função que recebe o caminho do arquivo csv com os registros salvos 
     e retorna uma lista com os registros salvos caso tal csv exista, 
@@ -17,32 +17,57 @@ def le_arquivo(path:str):
     else: 
         return None
 
-def mostra_opcoes(acao_realizada):
+def mostrar_opcoes(acao_realizada):
     """
     
     """
-    registros_path = {  '1': '../registros/registros_receita.csv',
-                        '2': '../registros/registros_despesa.csv',
-                        '3': '../registros/registros_investimento.csv'
+    registros_path = {
+        '1': '../registros/registros_receita.csv',
+        '2': '../registros/registros_despesa.csv',
+        '3': '../registros/registros_investimento.csv'
                     }
     
     while True:
 
-        # fazer validao
-        operacao = input('''Informe o tipo de operação do registro que deseja {acao_realizada} ou se 
-                            deseja cancelar: 
+        operacao = input('''
+    INFORME O TIPO DE REGISTRO QUE DESEJA EXECUTAR:
+    
+    [1] RECEITA                               
+    [2] DESPESA
+    [3] INVESTIMENTO
+    [4] CANCELAR
                         
-                        [1] RECEITA                              
-                        [2] DESPESA
-                        [3] INVESTIMENTO
-                        [4] CANCELAR''')
+    ''')
+        
+        try:
+            if operacao in registros_path:
+                limpar_tela()
+                tracos()
+                operacoes[operacao]()
+                break
+
+            else:
+                tentativas += 1
+
+                if tentativas == 3:
+                    print("Você atingiu o número máximo de tentativas.")
+                    encerrar_programa()
+                else:
+                    limpar_tela()
+                    print(
+                        f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
+                    time.sleep(2)
+                    limpar_tela()
+                    tela_inicial()
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
         
         if operacao =='4':
             return None
 
         elif operacao in registros_path:
 
-            lista_registro = le_arquivo(registros_path[operacao])
+            lista_registro = ler_arquivo(registros_path[operacao])
 
             if not lista_registro:
 
