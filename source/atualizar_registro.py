@@ -73,9 +73,9 @@ def mostrar_opcoes(acao_realizada):
 
                     datas[i] = tuple(data)
 
-                ids = seleciona_id_registros(
+                ids = selecionar_id_registros(
                     lista_registro, datas["antiga"], datas["recente"])
-                id = mostra_registros(ids, lista_registro)
+                id = mostrar_registros(ids, lista_registro)
                 return id, lista_registro
 
             else:
@@ -95,7 +95,7 @@ def mostrar_opcoes(acao_realizada):
             print(f"Ocorreu um erro: {e}")
 
 
-def seleciona_id_registros(lista_registro, data_antiga, data_recente):
+def selecionar_id_registros(lista_registro, data_antiga, data_recente):
 
     lista_len = list(range(len(lista_registro)))
     data_recente = datetime(data_recente[2], data_recente[1], data_recente[0])
@@ -110,7 +110,7 @@ def seleciona_id_registros(lista_registro, data_antiga, data_recente):
     return registros_id
 
 
-def mostra_registros(ids, lista_registro):
+def mostrar_registros(ids, lista_registro):
 
     def x(i): return datetime(
         lista_registro[i][2][2], lista_registro[i][2][1], lista_registro[i][2][0])
@@ -139,7 +139,7 @@ def mostra_registros(ids, lista_registro):
         return tipo
 
 
-def atualiza_registros():
+def atualizar_registro():
     # retorna o (id, lista_de_registros) caso exista algum registro caso contrario retorna None
     id_tuple = mostrar_opcoes()
 
