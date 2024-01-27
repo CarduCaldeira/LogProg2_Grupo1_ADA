@@ -16,10 +16,10 @@ def cria_registro():
 
         operacao = input('''Digite a opção que deseja realizar:  \n"
                         
-                        [1] CRIAR UM REGISTRO                             
-                        [2] LER UM REGISTRO                               
-                        [3] ATUALIZAR UM REGISTRO                         
-                        [4] DELETAR UM REGISTRO 
+                        [1] CRIAR UM REGISTRO DE DESPESA                             
+                        [2] CRIAR UM REGISTRO DE RECEITA                              
+                        [3] INVESTIMENTOS                        
+                        [4] CANCELAR 
                              
                              insira o número da opção desejada: ''')
         
