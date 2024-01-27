@@ -9,17 +9,17 @@ def tela_inicial():
     """
     f = pyfiglet.Figlet(font='big',
                         justify='center')
-    print(f.renderText('ADA ATM'))
+    print(f.renderText('ADA  ATM'))
     tracos()
 
 
 def tracos():
     """Imprime uma linha decorativa composta por caracteres '=' e '-', delimitando uma área visual. 
-    O comprimento total da linha é 70 caracteres.
+    O comprimento total da linha é 90 caracteres.
     """
-    print(f'{"="*70} \n'
-          f'{"-"*70} \n'
-          f'{"="*70} \n')
+    print(f'{"="*85} \n'
+          f'{"-"*85} \n'
+          f'{"="*85} \n')
 
 
 def limpar_tela():
