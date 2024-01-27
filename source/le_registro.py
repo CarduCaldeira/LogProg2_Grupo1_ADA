@@ -1,4 +1,4 @@
-def le_registros():
+def le_registro():
   # Abrir o arquivo
   with open("registros.csv", "r") as arquivo:
     # Ler as linhas do arquivo

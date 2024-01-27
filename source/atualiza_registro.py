@@ -143,7 +143,6 @@ def mostra_registros(ids, lista_registro):
         tipo = input("Digite o numero do registro desejado")
         return tipo
 
-
 def atualiza_registros():
     # retorna o (id, lista_de_registros) caso exista algum registro caso contrario retorna None
     id_tuple = mostra_opcoes()
