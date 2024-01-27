@@ -5,15 +5,17 @@ import pyfiglet
 
 
 def tela_inicial():
-    """_summary_
+    """Exibe uma tela de boas-vindas ao Sistema.
     """
-    f = pyfiglet.Figlet(font='big')
-    print(f.renderText('Bem Vindo ao Sistema da Ceu!'))
+    f = pyfiglet.Figlet(font='big',
+                        justify='center')
+    print(f.renderText('ADA ATM'))
     tracos()
 
 
 def tracos():
-    """_summary_
+    """Imprime uma linha decorativa composta por caracteres '=' e '-', delimitando uma área visual. 
+    O comprimento total da linha é 70 caracteres.
     """
     print(f'{"="*70} \n'
           f'{"-"*70} \n'
