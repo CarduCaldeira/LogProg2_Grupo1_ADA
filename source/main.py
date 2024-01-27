@@ -1,6 +1,4 @@
-import pyfiglet
-import os
-import time
+from utils import *
 from cria_registro import cria_registro
 from le_registro import le_registro
 from deleta_registro import deleta_registro
@@ -8,22 +6,6 @@ from atualiza_registro import atualiza_registro
 from mostra_features import mostra_features
 from exporta_relatorio import exporta_relatorio
 from encerrar_programa import encerrar_programa
-
-
-def limpar_tela():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
-def tracos():
-    print(f'{"="*70} \n'
-          f'{"-"*70} \n'
-          f'{"="*70} \n')
-
-
-def tela_inicial():
-    f = pyfiglet.Figlet(font='big')
-    print(f.renderText('Bem Vindo ao Sistema da Ceu!'))
-    tracos()
 
 
 def main():
