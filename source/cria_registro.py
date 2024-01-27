@@ -5,7 +5,10 @@ from cria_registro_receita import cria_registro_receita
 from cria_registro_despesa import cria_registro_despesa
 from investimento import investimento
 
-def cria_registro():
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def cria_registro(main):
     """
     Tela inicial com as opções de tipos de operações
     """
@@ -14,7 +17,7 @@ def cria_registro():
         '1': cria_registro_despesa,
         '2': cria_registro_receita,
         '3': investimento,
-        '4': lambda: None  # Função vazia para 'CANCELAR'
+        '4': main,
     }
 
     while True:
@@ -28,7 +31,8 @@ def cria_registro():
                              insira o número da opção desejada: ''')
         
         if operacao in menu_cria_registro:
+            limpar_tela()
             if operacao == '4':
-                break
+                main()
         else:
             print("Entrada inválida")

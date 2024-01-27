@@ -31,7 +31,7 @@ def main():
     tela_inicial()
 
     menu = {
-        '1': cria_registro,
+        '1': lambda: cria_registro(main),
         '2': le_registro,
         '3': atualiza_registro,
         '4': deleta_registro,
