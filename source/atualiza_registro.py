@@ -66,6 +66,7 @@ def mostra_opcoes(acao_realizada):
             
             ids = seleciona_id_registros(lista_registro, datas["antiga"], datas["recente"])
             id = mostra_registros(ids, lista_registro)
+            return id, lista_registro
 
         else:
             print("Opção inválida, informe a opção novamente!")
@@ -90,8 +91,13 @@ def mostra_registros(ids, lista_registro):
     x = lambda i : datetime(lista_registro[i][2][2], lista_registro[i][2][1],lista_registro[i][2][0] )
     
     ids_sorted = sorted(ids, key = x, reverse=True)
+     
+    if len(ids_sorted) < 5:
+        repeticoes = len(ids_sorted)
+    else:
+         repeticoes = 5
 
-    for j,i in enumerate(ids_sorted[:5]):
+    for j,i in enumerate(ids_sorted[:repeticoes]):
        
         operacao = lista_registro[i][0]
 
@@ -108,11 +114,13 @@ def mostra_registros(ids, lista_registro):
         return tipo
 
 def atualiza_registros():
-    # retorna o id caso exista algum registro caso caontrario retorna None
-    id = mostra_opcoes()
+    # retorna o (id, lista_de_registros) caso exista algum registro caso contrario retorna None
+    id_tuple = mostra_opcoes()
 
-    if id:
-        pass
-        #chama a função que cria registro 
+    if id_tuple:
+        id, lista_registros =id_tuple
+        registro = #chama a função que pega o novo registro e retorna a lista com as informaçoes
+        lista_registros[id] = registro
+        print("Registro atualizado")
 
 
