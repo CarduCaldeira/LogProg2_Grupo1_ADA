@@ -72,7 +72,7 @@ def main():
                 else:
                     limpar_tela()
                     print(
-                        f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
+                        f"'{operacao}' Não é uma opção váli1da. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
                     time.sleep(2)
                     limpar_tela()
                     tela_inicial()
