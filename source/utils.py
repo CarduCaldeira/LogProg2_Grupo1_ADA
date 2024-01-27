@@ -16,8 +16,10 @@ def limpar_tela():
 def encerrar_programa():
     """Encerra o programa.
     """
-    print("Encerrando o programa.")
+    limpar_tela()
+    print("Encerrando o programa...")
     time.sleep(2)
+    limpar_tela()
     sys.exit()
 
 
@@ -63,9 +65,9 @@ def tela_inicial():
 
                 if tentativas == 3:
                     print("Você atingiu o número máximo de tentativas.")
+                    time.sleep(2)
                     encerrar_programa()
                 else:
-                    limpar_tela()
                     print(
                         f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
                     time.sleep(2)

@@ -33,6 +33,9 @@ def mostrar_opcoes():
     """
 
     """
+    limpar_tela()
+    tracos()
+
     tentativas = 0
 
     registros_path = {
@@ -42,20 +45,18 @@ def mostrar_opcoes():
 
     while True:
 
-        operacao = input('''
-    INFORME O TIPO DE REGISTRO QUE DESEJA ATUALIZAR:
-    
-    [1] RECEITA                               
-    [2] DESPESA
-    [3] INVESTIMENTO
-    
-    [4] VOLTAR AO MENU PRINCIAL
-                        
-    ''').title()
+        print("DIGITE UMA DAS OPÇÕES ABAIXO:\n")
+        print("[1] RECEITA")
+        print("[2] DESPESA")
+        print("[3] INVESTIMENTO \n")
+        print("[4] SAIR")
+
+        operacao = input()
 
         try:
             if operacao == '4':
-                tela_inicial()
+                encerrar_programa()
+                break
 
             elif operacao in registros_path:
 
