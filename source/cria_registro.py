@@ -44,21 +44,6 @@ def cria_registro():
             
             investimento()
 
-def  executa_investimento():
-    """
-    Obtem as informacoes referentes a operacao investimento
-    e salva o registro com a funcao salva_registro
-    """
-    
-    mensagem = "Informe o valor do Investimento"
-    mensagem_erro = "Entrada invalida, informe um valor da numerico"
-    investimento = valida_digito(mensagem, mensagem_erro)
-
-    data = determina_data()
-    taxa_de_juros = 0.11
-
-    registro = ['investimento', investimento, data, taxa_de_juros]
-    salva_registro(registro)
 
 def valida_digito(mensagem:str, mensagem_erro:str):
     """

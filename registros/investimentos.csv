@@ -1,2 +1,4 @@
 tipo_investimento,valor,tempo_investimento,lucro,datetime
 Fundo de Renda Fixa,1566.0,12,191.83500000000004,"(25, 1, 2024)"
+LCIs (Letras de Crédito Imobiliário),1700.0,12,152.83000000000015,"(25, 1, 2024)"
+Tesouro Direto,12000.0,12,1207.2000000000007,"(25, 1, 2024)"
