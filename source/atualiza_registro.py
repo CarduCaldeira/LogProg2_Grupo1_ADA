@@ -1,19 +1,31 @@
 import datetime
+import os
 import csv
 from utils import valida_data, determina_data
 
+def le_arquivo(path:str):
 
-def le_arquivo():
-    pass
+    """Função que recebe o caminho do arquivo csv com os registros salvos 
+    e retorna uma lista com os registros salvos caso tal csv exista, 
+    caso contrario retorna None"""
+    
+    if os.path.exists(path):        
+        with open(path,'r') as file:       
+            registros = csv.reader(file)
+       
+        return registros  
+    else: 
+        return None
 
-
-def mostrar_opcoes(acao_realizada):
-
-    registros_path = {'1': 'registros_receita.csv',
-                      '2': 'registros_despesa.csv',
-                      '3': 'registros_investimento.csv'
-                      }
-
+def mostra_opcoes(acao_realizada):
+    """
+    
+    """
+    registros_path = {  '1': '../registros/registros_receita.csv',
+                        '2': '../registros/registros_despesa.csv',
+                        '3': '../registros/registros_investimento.csv'
+                    }
+    
     while True:
 
         # fazer validao
@@ -24,9 +36,8 @@ def mostrar_opcoes(acao_realizada):
                         [2] DESPESA
                         [3] INVESTIMENTO
                         [4] CANCELAR''')
-
-        if operacao == '4':
-
+        
+        if operacao =='4':
             return None
 
         elif operacao in registros_path:
@@ -37,70 +48,71 @@ def mostrar_opcoes(acao_realizada):
 
                 print("Não há registros com esse tipo de operação! ")
                 return None
+            
+            datas = dict()
 
-            data = []
             print("Informe um intervalo de data em que a operação desejada pertence \n")
+            
             for i in ["antiga", "recente"]:
-                print("Para a data mais antiga informe \n")  # O dia,mes ano
+                
+                print("Para a data mais {i} informe \n")
+                
+                data = []
                 for tempo in ['dia', 'mes', 'ano']:
 
-                    data.append(valida_data(tempo))
-                    # imaginar que em um app o usuario escolheria um intervalo
-                    # de data em um calendario
+                    data.append(valida_data(tempo, acao_realizada))
 
-            data = tuple(data)
-            # seleciona os registros ques estao neste intevalo
-            # aqui da pra usar funçao lambda e o filter
-            # depois de selecionado printa os 5 primeiros registros dessa lista (para nao ficar muito grande
-            # a mensagem na tela), o usuario retorna entao o id
+                datas[i] = tuple(data)
+            
+            ids = seleciona_id_registros(lista_registro, datas["antiga"], datas["recente"])
+            id = mostra_registros(ids, lista_registro)
+
         else:
             print("Opção inválida, informe a opção novamente!")
             continue
+           
+def seleciona_id_registros(lista_registro, data_antiga, data_recente):
+    
+    lista_len = list(range(len(lista_registro)))
+    data_recente = datetime(data_recente[2],data_recente[1],data_recente[0])
+    data_antiga = datetime(data_antiga[2],data_antiga[1],data_antiga[0])
 
-        # funcao_q_verifca quantas opcoes de registros com tal operação
+    f = lambda i: lista_registro[i]
+    g = lambda registro: registro[2]
+    h = lambda data: datetime(data[2],data[1],data[0])
+    r = lambda data: data_antiga <= data <= data_recente
+
+    registros_id = list(filter(lambda i: r(h(g(f(i)))), lista_len))
+    return registros_id
+
+def mostra_registros(ids, lista_registro):
+    
+    x = lambda i : datetime(lista_registro[i][2][2], lista_registro[i][2][1],lista_registro[i][2][0] )
+    
+    ids_sorted = sorted(ids, key = x, reverse=True)
+
+    for j,i in enumerate(ids_sorted[:5]):
+       
+        operacao = lista_registro[i][0]
+
+        mensagem = f"[{j+1}] Tipo de operação:{lista_registro[i][0]}, Valor:{lista_registro[i][1]},"
+        + f"Data:{lista_registro[i][2][0]}/{lista_registro[i][2][1]}/{lista_registro[i][2][2]}"
+        
+        if operacao == 'investimento':
+            print(mensagem + f", Juros:{lista_registro[i][3]} \n")
+        else:
+             print(mensagem + "\n")
+
+        # fazer validação
+        tipo = input("Digite o numero do registro desejado")
+        return tipo
+
+def atualiza_registros():
+    # retorna o id caso exista algum registro caso caontrario retorna None
+    id = mostra_opcoes()
+
+    if id:
+        pass
+        #chama a função que cria registro 
 
 
-def get_id(acao_realizada):
-    """
-    Função que retorna o id a ser atualizado/deletado
-    espeficicando o tipo de operacaçao, a data, e a despesa
-    """
-
-    id = mostrar_opcoes(acao_realizada)
-
-    return id
-
-
-def atualiza_registro():
-
-    id = get_id()
-
-    # Obter a nova data
-    data = determina_data()
-
-    # Obter o novo registro
-    tipo = input(
-        "Digite o novo tipo de registro (despesa, receita, investimento): ")
-
-    # Obter o novo valor do registro
-    valor = float(input("Digite o novo valor do registro: "))
-
-    # Se o tipo de registro for despesa, multiplicar o valor por -1
-    if tipo == "despesa":
-        valor *= -1
-
-        # Atualizar o registro no arquivo
-    with open("registros/registros_{operacao}.csv", "r") as arquivo:
-        # Ler as linhas do arquivo
-        linhas = arquivo.readlines()
-
-    with open("registros/registros_{operacao}.csv", "w") as arquivo:
-        # Ler as linhas do arquivo
-        linhas = arquivo.writer()
-
-    # Atualizar o registro
-    linhas[id] = f"{data},{tipo},{valor}\n"
-
-    # Salvar o arquivo
-    with open("registros.csv", "w") as arquivo:
-        arquivo.writelines(linhas)
