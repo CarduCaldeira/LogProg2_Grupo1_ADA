@@ -1,4 +1,5 @@
 import os
+import time
 import datetime
 import pyfiglet
 
@@ -60,6 +61,20 @@ def valida_digito(mensagem: str, mensagem_erro: str):
             else:
                 print("O valor deve ser maior que zero.")
 
+def valida_data(tempo, acao_realizada):
+    """ """
+    
+    intervalo_valido = {'dia':(0,32),'mes':(0,13), 'ano':(2021,datetime.now().year +1)}
 
-def valida_data(data):
-    """valor_min = input(f"Informe o {tempo} do registro que deseja {acao_realizada}: ")"""
+    while True:
+        try:
+            data = int(input(f"Informe o {tempo} do registro que deseja {acao_realizada}: "))   
+        except ValueError:
+            print("Valor invalido")
+            continue
+        else:
+            if intervalo_valido[tempo][0] < data and data < intervalo_valido[tempo][1]:
+                return data 
+            else:
+                print("Data invalida.")
+

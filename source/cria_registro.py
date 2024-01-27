@@ -1,5 +1,4 @@
 import csv
-from datetime import datetime
 import os
 from cria_registro_receita import cria_registro_receita
 from cria_registro_despesa import cria_registro_despesa
