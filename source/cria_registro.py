@@ -7,13 +7,17 @@ from investimento import investimento
 
 def cria_registro():
     """
-    Tela inicial com as opçoes de tipos de operacoes
+    Tela inicial com as opções de tipos de operações
     """
 
-    repeat_question = True
+    menu_cria_registro = {
+        '1': cria_registro_despesa,
+        '2': cria_registro_receita,
+        '3': investimento,
+        '4': lambda: None  # Função vazia para 'CANCELAR'
+    }
 
-    while repeat_question:
-
+    while True:
         operacao = input('''Digite a opção que deseja realizar:  \n"
                         
                         [1] DESPESA                             
@@ -23,24 +27,8 @@ def cria_registro():
                              
                              insira o número da opção desejada: ''')
         
-        if operacao not in ['1','2','3','4']:
-
-            print("Entrada invalida")
-
-        elif operacao == '4':
-            
-            repeat_question = False
-            continue
-        
-        elif operacao == '1':
-            
-            cria_registro_despesa()
-
-        elif operacao == '2':
-            
-            cria_registro_receita()
-
-        elif operacao == '3':
-            
-            investimento()
-
+        if operacao in menu_cria_registro:
+            if operacao == '4':
+                break
+        else:
+            print("Entrada inválida")

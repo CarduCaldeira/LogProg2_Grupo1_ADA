@@ -65,18 +65,18 @@ def aplicacao_tesouro_direto():
     tempo = int(input("Informe quantos meses deseja investir esse valor: "))
     taxa_juros = 10.06 / 100
     lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("Tesouro Direto", valor, tempo, lucro)
+    salva_registro_investimento("tesouro direto", valor, tempo, lucro)
 
 def aplicacao_cdb():
     valor = float(input("Informe o valor do investimento: "))
     tempo = int(input("Informe quantos meses deseja investir esse valor: "))
     taxa_juros = 11.65 / 100
     lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("CDBs", valor, tempo, lucro)
+    salva_registro_investimento("cbds", valor, tempo, lucro)
 
 def aplicacao_poupanca():
     valor = float(input("Informe o valor do investimento: "))
     tempo = int(input("Informe quantos meses deseja investir esse valor: "))
     taxa_juros = 6.17 / 100
     lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("Poupança", valor, tempo, lucro)
+    salva_registro_investimento("poupanca", valor, tempo, lucro)
