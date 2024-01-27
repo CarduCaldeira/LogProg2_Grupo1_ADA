@@ -1,7 +1,13 @@
 import os
+import sys
 import time
 from datetime import datetime
 import pyfiglet
+
+
+def encerrar_programa():
+    print("Encerrando o programa.")
+    sys.exit()
 
 
 def tela_inicial():
@@ -28,7 +34,6 @@ def limpar_tela():
     e usando 'cls' no Windows e 'clear' em sistemas Unix/Linux.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
-
 
 
 def determina_data():
@@ -61,20 +66,22 @@ def valida_digito(mensagem: str, mensagem_erro: str):
             else:
                 print("O valor deve ser maior que zero.")
 
+
 def valida_data(tempo, acao_realizada):
     """ """
-    
-    intervalo_valido = {'dia':(0,32),'mes':(0,13), 'ano':(2021,datetime.now().year +1)}
+
+    intervalo_valido = {'dia': (0, 32), 'mes': (
+        0, 13), 'ano': (2021, datetime.now().year + 1)}
 
     while True:
         try:
-            data = int(input(f"Informe o {tempo} do registro que deseja {acao_realizada}: "))   
+            data = int(
+                input(f"Informe o {tempo} do registro que deseja {acao_realizada}: "))
         except ValueError:
             print("Valor invalido")
             continue
         else:
             if intervalo_valido[tempo][0] < data and data < intervalo_valido[tempo][1]:
-                return data 
+                return data
             else:
                 print("Data invalida.")
-
