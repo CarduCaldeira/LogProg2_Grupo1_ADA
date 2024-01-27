@@ -2,6 +2,7 @@ import csv
 import os
 from cria_registro_receita import cria_registro_receita
 from cria_registro_despesa import cria_registro_despesa
+from Investimentos import investimento
 from utils import determina_data, valida_digito
 
 def cria_registro():
@@ -41,7 +42,7 @@ def cria_registro():
 
         elif operacao == '3':
             
-            executa_investimento()
+            investimento()
 
 def  executa_investimento():
     """
