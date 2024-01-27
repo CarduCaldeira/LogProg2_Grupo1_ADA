@@ -2,7 +2,17 @@ import os
 import csv
 import datetime
 from utils import *
-from main import main
+
+
+def atualizar_registro():
+    # retorna o (id, lista_de_registros) caso exista algum registro caso contrario retorna None
+    id_tuple = mostrar_opcoes()
+
+    if id_tuple:
+        id, lista_registros = id_tuple
+        # registro = chama a função que pega o novo registro e retorna a lista com as informaçoes
+        # lista_registros[id] = registro
+        print("Registro atualizado")
 
 
 def ler_arquivo(path: str) -> list:
@@ -46,7 +56,7 @@ def mostrar_opcoes(acao_realizada):
 
         try:
             if operacao == 'X':
-                main()
+                tela_inicial()
 
             elif operacao in registros_path:
 
@@ -137,14 +147,3 @@ def mostrar_registros(ids, lista_registro):
         # fazer validação
         tipo = input("Digite o numero do registro desejado")
         return tipo
-
-
-def atualizar_registro():
-    # retorna o (id, lista_de_registros) caso exista algum registro caso contrario retorna None
-    id_tuple = mostrar_opcoes()
-
-    if id_tuple:
-        id, lista_registros = id_tuple
-        # registro = chama a função que pega o novo registro e retorna a lista com as informaçoes
-        # lista_registros[id] = registro
-        print("Registro atualizado")
