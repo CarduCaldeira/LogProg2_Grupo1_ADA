@@ -1,5 +1,4 @@
 import os
-import time
 import datetime
 import pyfiglet
 
@@ -24,9 +23,11 @@ def tracos():
 
 def limpar_tela():
     """
-    Limpa a tela do terminal 
+    Limpa a tela do terminal, detectando automaticamente o sistema operacional
+    e usando 'cls' no Windows e 'clear' em sistemas Unix/Linux.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 
 def determina_data():
