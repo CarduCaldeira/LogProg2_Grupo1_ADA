@@ -29,7 +29,7 @@ def ler_arquivo(path: str) -> list:
         return None
 
 
-def mostrar_opcoes(acao_realizada):
+def mostrar_opcoes():
     """
 
     """
