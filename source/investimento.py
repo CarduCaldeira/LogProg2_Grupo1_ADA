@@ -6,7 +6,7 @@ import os
 
 def investimento():
     """
-    Tela inicial da seleção de investimentos
+    Tela inicial da seleção de investimento
     """
 
     repeat_question = True
@@ -47,12 +47,12 @@ def salva_registro_investimento(tipo_investimento, valor, tempo, lucro:list):
     if not os.path.isdir('../registros'):
         os.makedirs('../registros')
 
-    if not os.path.isfile('../registros/investimentos.csv'):
-        with open('../registros/investimentos.csv', 'w', newline='') as file:
+    if not os.path.isfile('../registros/investimento.csv'):
+        with open('../registros/investimento.csv', 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["tipo_investimento", "valor", "tempo_investimento", "lucro", "datetime"])
 
-    with open('../registros/investimentos.csv', 'a', newline='') as file:
+    with open('../registros/investimento.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         data = determina_data()
         writer.writerow([tipo_investimento, valor, tempo, lucro, data])

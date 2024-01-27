@@ -3,7 +3,8 @@ from datetime import datetime
 import os
 from cria_registro_receita import cria_registro_receita
 from cria_registro_despesa import cria_registro_despesa
-from utils import determina_data, valida_digitofrom investimento import investimento
+from utils import determina_data, valida_digito 
+from investimento import investimento
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
