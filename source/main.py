@@ -1,8 +1,8 @@
 from utils import *
 from cria_registro import cria_registro
 from le_registro import le_registro
-from deleta_registro import deletar_registro
-from source.atualizar_registro import atualiza_registro
+from deletar_registro import deletar_registro
+from atualizar_registro import atualizar_registro
 from mostra_features import mostra_features
 from exporta_relatorio import exporta_relatorio
 from encerrar_programa import encerrar_programa
@@ -15,8 +15,8 @@ def main():
     operacoes = {
         '1': cria_registro,
         '2': le_registro,
-        '3': atualiza_registro,
-        '4': deleta_registro,
+        '3': atualizar_registro,
+        '4': deletar_registro,
         '5': mostra_features,
         '6': exporta_relatorio,
         '7': encerrar_programa
@@ -60,26 +60,6 @@ def main():
                     tela_inicial()
         except Exception as e:
             print(f"Ocorreu um erro: {e}")
-
-
-def le_registro():
-    pass
-
-
-def atualiza_registro():
-    pass
-
-
-def deleta_registro():
-    pass
-
-
-def mostra_features():
-    pass
-
-
-def exporta_relatorio():
-    pass
 
 
 if __name__ == "__main__":
