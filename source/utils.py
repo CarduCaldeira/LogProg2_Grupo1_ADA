@@ -13,10 +13,29 @@ def encerrar_programa():
 def tela_inicial():
     """Exibe uma tela de boas-vindas ao Sistema.
     """
+
+    limpar_tela()
+
     f = pyfiglet.Figlet(font='big',
                         justify='center')
     print(f.renderText('ADA  ATM'))
+
     tracos()
+
+    operacao = input('''                         
+DIGITE UMA DAS OPÇÕES ABAIXO:
+
+[1] CRIAR UM REGISTRO
+[2] LER UM REGISTRO
+[3] ATUALIZAR UM REGISTRO
+[4] DELETAR UM REGISTRO
+[5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS
+[6] EXPORTAR RELATÓRIO
+[7] SAIR ''')
+
+    return operacao
+
+
 
 
 def tracos():

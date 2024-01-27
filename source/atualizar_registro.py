@@ -38,24 +38,23 @@ def mostrar_opcoes():
     registros_path = {
         '1': '../registros/registros_receita.csv',
         '2': '../registros/registros_despesa.csv',
-        '3': '../registros/registros_investimento.csv',
-    }
+        '3': '../registros/registros_investimento.csv'}
 
     while True:
 
         operacao = input('''
-    INFORME O TIPO DE REGISTRO QUE DESEJA ATULIZAR:
+    INFORME O TIPO DE REGISTRO QUE DESEJA ATUALIZAR:
     
     [1] RECEITA                               
     [2] DESPESA
     [3] INVESTIMENTO
     
-    [X] VOLTAR AO MENU PRINCIAL
+    [4] VOLTAR AO MENU PRINCIAL
                         
     ''').title()
 
         try:
-            if operacao == 'X':
+            if operacao == '4':
                 tela_inicial()
 
             elif operacao in registros_path:
@@ -79,7 +78,7 @@ def mostrar_opcoes():
                     data = []
                     for tempo in ['dia', 'mes', 'ano']:
 
-                        data.append(valida_data(tempo, acao_realizada))
+                        data.append(valida_data(tempo))
 
                     datas[i] = tuple(data)
 
