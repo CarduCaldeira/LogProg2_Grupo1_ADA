@@ -17,11 +17,8 @@ def investimento():
                         
                         [1] Tesouro Direto: 10,06% a.a                             
                         [2] CDBs (Certificados de Depósito Bancário): 11,65% a.a                            
-                        [3] Fundos de Renda Fixa: 12,25% a.a                        
-                        [4] LCIs (Letras de Crédito Imobiliário): 8,99% a.a
-                        [5] LCAs (Letras de Crédito do Agronegócio): 7,7% a.a
-                        [6] Poupança: 6,17% a.a 
-                        [7] Cancelar
+                        [3] Poupança: 6,17% a.a 
+                        [4] Cancelar
                                
                              insira o número da opção desejada: ''')
                         
@@ -35,21 +32,9 @@ def investimento():
     
         elif investimento == '3':
     
-            aplicacao_renda_fixa()
-        
-        elif investimento == '4':
-        
-            aplicacao_lci()
-        
-        elif investimento == '5':
-        
-            aplicacao_lca()
-    
-        elif investimento == '6':
-        
             aplicacao_poupanca()
         
-        elif investimento == '7':
+        elif investimento == '4':
 
             repeat_question = False
             return
@@ -88,27 +73,6 @@ def aplicacao_cdb():
     taxa_juros = 11.65 / 100
     lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
     salva_registro_investimento("CDBs", valor, tempo, lucro)
-
-def aplicacao_renda_fixa():
-    valor = float(input("Informe o valor do investimento: "))
-    tempo = int(input("Informe quantos meses deseja investir esse valor: "))
-    taxa_juros = 12.25 / 100
-    lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("Fundo de Renda Fixa", valor, tempo, lucro)
-
-def aplicacao_lci():
-    valor = float(input("Informe o valor do investimento: "))
-    tempo = int(input("Informe quantos meses deseja investir esse valor: "))
-    taxa_juros = 8.99 / 100
-    lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("LCIs (Letras de Crédito Imobiliário)", valor, tempo, lucro)
-
-def aplicacao_lca():
-    valor = float(input("Informe o valor do investimento: "))
-    tempo = int(input("Informe quantos meses deseja investir esse valor: "))
-    taxa_juros = 7.7 / 100
-    lucro = valor * (1 + taxa_juros)**(tempo/12) - valor
-    salva_registro_investimento("LCAs (Letras de Crédito do Agronegócio)", valor, tempo, lucro)
 
 def aplicacao_poupanca():
     valor = float(input("Informe o valor do investimento: "))
