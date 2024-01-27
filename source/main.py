@@ -2,7 +2,7 @@ from utils import *
 from cria_registro import cria_registro
 from le_registro import le_registro
 from deleta_registro import deletar_registro
-from atualiza_registro import atualiza_registro
+from source.atualizar_registro import atualiza_registro
 from mostra_features import mostra_features
 from exporta_relatorio import exporta_relatorio
 from encerrar_programa import encerrar_programa
