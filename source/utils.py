@@ -5,37 +5,22 @@ from datetime import datetime
 import pyfiglet
 
 
-def encerrar_programa():
-    print("Encerrando o programa.")
-    sys.exit()
-
-
-def tela_inicial():
-    """Exibe uma tela de boas-vindas ao Sistema.
+def limpar_tela():
     """
+    Limpa a tela do terminal, detectando automaticamente o sistema operacional
+    e usando 'cls' no Windows e 'clear' em sistemas Unix/Linux.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+
+def encerrar_programa():
+    """Encerra o programa.
+    """
     limpar_tela()
-
-    f = pyfiglet.Figlet(font='big',
-                        justify='center')
-    print(f.renderText('ADA  ATM'))
-
-    tracos()
-
-    operacao = input('''                         
-DIGITE UMA DAS OPÇÕES ABAIXO:
-
-[1] CRIAR UM REGISTRO
-[2] LER UM REGISTRO
-[3] ATUALIZAR UM REGISTRO
-[4] DELETAR UM REGISTRO
-[5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS
-[6] EXPORTAR RELATÓRIO
-[7] SAIR ''')
-
-    return operacao
-
-
+    print("Encerrando o programa...")
+    time.sleep(2)
+    limpar_tela()
+    sys.exit()
 
 
 def tracos():
@@ -45,6 +30,51 @@ def tracos():
     print(f'{"="*85} \n'
           f'{"-"*85} \n'
           f'{"="*85} \n')
+
+
+def tela_inicial():
+    """Exibe a tela inicial e obtém a escolha do usuário.
+    """
+    limpar_tela()
+
+    # Exibição do título usando pyfiglet
+    f = pyfiglet.Figlet(font='big', justify='center')
+    print(f.renderText('ADA  ATM'))
+
+    tracos()
+
+    # Exibição das opções
+    print("DIGITE UMA DAS OPÇÕES ABAIXO:\n")
+    print("[1] CRIAR UM REGISTRO")
+    print("[2] LER UM REGISTRO")
+    print("[3] ATUALIZAR UM REGISTRO")
+    print("[4] DELETAR UM REGISTRO")
+    print("[5] INFORMAÇÕES SOBRE SEUS INVESTIMENTOS")
+    print("[6] EXPORTAR RELATÓRIO \n")
+    print("[7] SAIR")
+
+    while True:
+
+        operacao = input()
+
+        try:
+            if operacao.isdigit() and 1 <= int(operacao) <= 7:
+                return int(operacao)
+            else:
+                tentativas += 1
+
+                if tentativas == 3:
+                    print("Você atingiu o número máximo de tentativas.")
+                    time.sleep(2)
+                    encerrar_programa()
+                else:
+                    print(
+                        f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
+                    time.sleep(2)
+                    limpar_tela()
+                    tela_inicial()
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
 
 
 def limpar_tela():
