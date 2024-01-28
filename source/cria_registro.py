@@ -5,7 +5,7 @@ from cria_registro_despesa import cria_registro_despesa
 from Investimentos import investimento
 from utils import determina_data, valida_digito
 
-def cria_registro():
+def cria_registro(**kwargs):
     """
     Tela inicial com as opçoes de tipos de operacoes
     """
@@ -33,16 +33,21 @@ def cria_registro():
             continue
         
         elif operacao == '1':
-            
-            cria_registro_despesa()
+
+            cria_registro_despesa(kwargs)
+            repeat_question = False
 
         elif operacao == '2':
             
-            cria_registro_receita()
+            cria_registro_receita(kwargs)
+            repeat_question = False
+
 
         elif operacao == '3':
             
-            investimento()
+            investimento(kwargs)
+            repeat_question = False
+
 
 def  executa_investimento():
     """

@@ -4,7 +4,7 @@ import os
 
 #funcao sera destinada para armazenar apenas os registros de despesa em um CSV na pasta registros.
 
-def cria_registro_despesa():
+def cria_registro_despesa(flag_atualiza=None):
     mensagem = "informe o valor da despesa: "
     mensagem_erro = "entrada inválida, informe um valor numérico"
 
@@ -12,7 +12,11 @@ def cria_registro_despesa():
     data = determina_data()
     
     registro = ['despesa', despesa, data]
-    salva_registro(registro)
+    
+    if flag_atualiza.get('atualiza'):
+        atualiza_registro_despesa(registro, flag_atualiza['id'])
+    else:
+        salva_registro(registro)
 
 def valida_digito(mensagem:str, mensagem_erro:str):
 
@@ -45,3 +49,22 @@ def salva_registro(registro:list):
         registros_despesa.writerow(registro)
 
     print ('Registro de despesa salvo')
+
+def atualiza_registro_despesa(registro, id):
+    """
+    Recebe uma lista representando o registro com as suas 
+    respectivas informações e salva no arquivo registros/registros.csv.
+    """
+
+    with open('../registros/registros_despesa.csv','r') as file:
+
+        registros = list(csv.reader(file, delimiter=';', lineterminator='\n'))
+        
+    registros[id] = registro
+
+    with open('../registros/registros_despesa.csv','w') as file:
+
+        escritor = csv.writer(file, delimiter=';', lineterminator='\n')
+        escritor.writerows(registros)
+
+    print('Registro atualizado')

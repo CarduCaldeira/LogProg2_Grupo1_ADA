@@ -116,7 +116,7 @@ def valida_digito(mensagem: str, mensagem_erro: str):
                 print("O valor deve ser maior que zero.")
 
 
-def valida_data(tempo, acao_realizada):
+def valida_data(tempo):
     """ """
 
     intervalo_valido = {'dia': (0, 32), 'mes': (
@@ -125,7 +125,7 @@ def valida_data(tempo, acao_realizada):
     while True:
         try:
             data = int(
-                input(f"Informe o {tempo} do registro que deseja {acao_realizada}: "))
+                input(f"Informe o {tempo} do registro que deseja: "))
         except ValueError:
             print("Valor invalido")
             continue

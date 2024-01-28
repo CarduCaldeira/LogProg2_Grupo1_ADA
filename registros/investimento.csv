@@ -1,3 +1,2 @@
-tipo_investimento,valor,tempo_investimento,lucro,datetime
-tesouro direto,2500.0,12,251.5,"(27, 1, 2024)"
-tesouro direto,1400.0,32,407.7570266131936,"(27, 1, 2024)"
+tipo_investimento,valor,datetime,tempo_investimento,lucro
+poupanca,200.0,"(28, 1, 2024)",10,10.231687719653422

@@ -4,7 +4,7 @@ import os
 
 #função será destinada para armazenar apenas os registros de receita.
 
-def cria_registro_receita():
+def cria_registro_receita(flag_atualiza=None):
     """
     Obtem as informacoes referentes a operacao receita
     e salva o registro com a funcao salva_registro
@@ -17,7 +17,11 @@ def cria_registro_receita():
     data = determina_data()
 
     registro = ['receita', receita, data, -1]
-    salva_registro(registro)
+    
+    if flag_atualiza.get('atualiza'):
+        atualiza_registro_receita(registro, flag_atualiza['id'])
+    else:
+        salva_registro(registro)
 
 def valida_digito(mensagem:str, mensagem_erro:str):
     """
@@ -66,3 +70,23 @@ def salva_registro(registro:list):
         registros_receita.writerow(registro)
     
     print('Registro de receita salvo')
+
+def atualiza_registro_receita(registro, id):
+    """
+    Recebe uma lista representando o registro com as suas 
+    respectivas informações e salva no arquivo registros/registros.csv.
+    """
+
+    with open('../registros/registros_receita.csv','r') as file:
+
+        registros = list(csv.reader(file, delimiter=';', lineterminator='\n'))
+        
+    registros[id] = registro
+
+    with open('../registros/registros_receita.csv','w') as file:
+
+        escritor = csv.writer(file, delimiter=';', lineterminator='\n')
+        escritor.writerows(registros)
+
+    print('Registro atualizado')
+
