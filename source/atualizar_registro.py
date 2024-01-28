@@ -9,11 +9,13 @@ from utils import valida_data
 
 def atualizar_registro():
     
-    id, operacao = mostrar_opcoes()
-
-    if id:
-
-        cria_registro(atualiza = True, id= id)
+    flag_mostra_opcao = mostrar_opcoes()
+    
+    if flag_mostra_opcao:
+        id, operacao = flag_mostra_opcao
+        if str(id):
+            cria_registro(atualiza = True, id= id)
+    
       
 
 def ler_arquivo(path: str) -> list:
@@ -36,16 +38,16 @@ def mostrar_opcoes():
     tentativas = 0
 
     registros_path = {
-        '1': '../registros/registros_receita.csv',
-        '2': '../registros/registros_despesa.csv',
+        '1': '../registros/registros_despesa.csv',
+        '2': '../registros/registros_receita.csv',
         '3': '../registros/investimento.csv'}
 
     while True:
 
         print("DIGITE UMA DAS OPÇÕES ABAIXO:\n")
-        print("[1] RECEITA")
-        print("[2] DESPESA")
-        print("[3] INVESTIMENTO \n")
+        print("[1] ATUALIZAR UM REGISTRO DE DESPESA")
+        print("[2] ATUALIZAR UM REGISTRO DE RECEITA")
+        print("[3] ATUALIZAR UM REGISTRO DE INVESTIMENTO \n")
         print("[4] SAIR")
 
         operacao = input()
@@ -61,7 +63,7 @@ def mostrar_opcoes():
 
             if not lista_registro:
 
-                print("Não há registros com esse tipo de operação! ")
+                print("Não há registros com esse tipo de operação! \n")
                 return None
 
             datas = dict()
@@ -78,10 +80,18 @@ def mostrar_opcoes():
 
                     data.append(valida_data(tempo))
 
-                datas[i] = tuple(data)
+                datas[i] = datetime.date(data[2], data[1], data[0])
+                
+            if not datas["antiga"]  <= datas["recente"]:
+                print("Periodo invalido")
+                return None
                 
             ids = selecionar_id_registros(
                 lista_registro, datas["antiga"], datas["recente"])
+            
+            if len(ids)== 0:
+                print("Sem registros nesse periodo")
+                return None
             
             id = mostrar_registros(ids, lista_registro)
             return id, operacao
@@ -104,9 +114,6 @@ def selecionar_id_registros(lista_registro, data_antiga, data_recente):
     
     """
     lista_len = list(range(len(lista_registro)))
-    data_recente = datetime.date(data_recente[2], data_recente[1], data_recente[0])
-    data_antiga = datetime.date(data_antiga[2], data_antiga[1], data_antiga[0])
-
 
     def f(i): return lista_registro[i]
     def g(registro): return registro[2]
@@ -117,7 +124,7 @@ def selecionar_id_registros(lista_registro, data_antiga, data_recente):
     registros_id = list(filter(lambda i: r(h(s(g(f(i))))), lista_len))
     return registros_id
 
-
+1
 def mostrar_registros(ids, lista_registro):
     """
 
@@ -141,17 +148,17 @@ def mostrar_registros(ids, lista_registro):
 
         operacao = lista_registro[i][0]
 
-        mensagem = (f"[{j+1}] Tipo de operação:{lista_registro[i][0]}, Valor:{lista_registro[i][1]},"
+        mensagem = (f"\n [{j+1}] Tipo de operação:{lista_registro[i][0]}, Valor:{lista_registro[i][1]},"
         f"Data:{lista_registro[i][2]}")
 
         if operacao == 'investimento':
-            print(mensagem + f", Juros:{lista_registro[i][3]} \n")
+            print(mensagem + f", Juros:{lista_registro[i][3]}")
         else:
-            print(mensagem + "\n")
+            print(mensagem)
     
     while True:
         try:
-            escolha = int(input("Digite o numero do registro desejado "))
+            escolha = int(input("\n Digite o numero do registro desejado \n"))
             if escolha not in list(range(1,repeticoes+1)):
                 print("Digite um número inteiro válido \n")
             else:

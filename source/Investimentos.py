@@ -4,7 +4,7 @@ import os
 
 # funcao sera destinada a armazenar registros de investimento e calcular a taxa de investimento.
 
-def investimento(flag_atualiza):
+def investimento(flag_atualiza=None):
     """
     Tela inicial da seleção de investimento
     """
@@ -53,13 +53,8 @@ def salva_registro_investimento(tipo_investimento, valor, tempo, lucro:list):
     if not os.path.isdir('../registros'):
         os.makedirs('../registros')
 
-    if not os.path.isfile('../registros/investimento.csv'):
-        with open('../registros/investimento.csv', 'w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["tipo_investimento", "valor", "datetime","tempo_investimento", "lucro"])
-
     with open('../registros/investimento.csv', 'a', newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file,delimiter=';', lineterminator='\n') 
         data = determina_data()
         writer.writerow([tipo_investimento, valor, data, tempo, lucro])
     
@@ -111,7 +106,7 @@ def atualiza_registro_investimento(tipo_investimento, valor, tempo, lucro:list, 
         
     registros[id] = registro
 
-    with open('../registros/registros_despesa.csv','w') as file:
+    with open('../registros/investimento.csv','w') as file:
 
         escritor = csv.writer(file, delimiter=';', lineterminator='\n')
         escritor.writerows(registros)

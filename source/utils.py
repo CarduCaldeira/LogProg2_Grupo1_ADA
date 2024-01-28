@@ -35,7 +35,7 @@ def tracos():
 def tela_inicial():
     """Exibe a tela inicial e obtém a escolha do usuário.
     """
-    limpar_tela()
+    #limpar_tela()
 
     # Exibição do título usando pyfiglet
     f = pyfiglet.Figlet(font='big', justify='center')
