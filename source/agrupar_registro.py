@@ -1,5 +1,14 @@
 from functools import reduce
-from source.registro_lista import RegistroLista
+import os
+import csv
+import datetime
+import time
+import re
+from cria_registro import cria_registro
+from utils import encerrar_programa
+from utils import valida_data
+from utils import ler_arquivo
+from utils import limpar_tela
 
 # Função de agrupamento usando reduce
 def agrupar_registro_por_tipo(registro_lista):
@@ -10,10 +19,6 @@ def agrupar_registro_por_tipo(registro_lista):
     agrupamento = reduce(lambda acc, reg: {**acc, reg.tipo: acc.get(reg.tipo, 0) + reg.valor}, registro, {})
     
     return agrupamento
-
-def main():
-    # Inicialize outras variáveis e estruturas necessárias
-    registro_lista = RegistroLista()
 
     # Restante do código
 
@@ -46,6 +51,3 @@ def main():
     print("Você atingiu o número máximo de tentativas. Encerrando o programa.")
     time.sleep(2)
     encerrar_programa(registro_lista)
-
-if __name__ == "__main__":
-    main()
