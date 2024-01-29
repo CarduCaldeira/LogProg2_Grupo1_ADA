@@ -6,35 +6,23 @@ import re
 from cria_registro import cria_registro
 from utils import encerrar_programa
 from utils import valida_data
+from utils import ler_arquivo
+from utils import limpar_tela
 
 def atualizar_registro():
     
-    flag_mostra_opcao = mostrar_opcoes()
+    flag_mostra_opcao = mostrar_opcoes('ATUALIZAR')
     
     if flag_mostra_opcao:
         id, operacao = flag_mostra_opcao
         if str(id):
-            cria_registro(atualiza = True, id= id)
-    
-      
+            cria_registro(atualiza = True, id= id, operacao=operacao)
 
-def ler_arquivo(path: str) -> list:
-    """Função que recebe o caminho do arquivo csv com os registros salvos 
-    e retorna uma lista com os registros salvos caso tal csv exista, 
-    caso contrario retorna None"""
 
-    if os.path.exists(path):
-            file = open(path, 'r', newline='')
-            registros = list(csv.reader(file, delimiter=';', lineterminator='\n'))
-            return registros
-    else:
-        return None
-
-def mostrar_opcoes():
+def mostrar_opcoes(tipo_operacao):
     """
 
     """
-
     tentativas = 0
 
     registros_path = {
@@ -45,70 +33,79 @@ def mostrar_opcoes():
     while True:
 
         print("DIGITE UMA DAS OPÇÕES ABAIXO:\n")
-        print("[1] ATUALIZAR UM REGISTRO DE DESPESA")
-        print("[2] ATUALIZAR UM REGISTRO DE RECEITA")
-        print("[3] ATUALIZAR UM REGISTRO DE INVESTIMENTO \n")
+        print(f"[1] {tipo_operacao} UM REGISTRO DE DESPESA")
+        print(f"[2] {tipo_operacao} UM REGISTRO DE RECEITA")
+        print(f"[3] {tipo_operacao} UM REGISTRO DE INVESTIMENTO \n")
         print("[4] SAIR")
 
         operacao = input()
 
-        #try:
-        if operacao == '4':
-            encerrar_programa()
-            break
-
-        elif operacao in registros_path:
-
-            lista_registro = ler_arquivo(registros_path[operacao])
-
-            if not lista_registro:
-
-                print("Não há registros com esse tipo de operação! \n")
-                return None
-
-            datas = dict()
-
-            print(
-                "Informe um intervalo de data em que a operação desejada pertence \n")
-
-            for i in ["antiga", "recente"]:
-
-                print(f"Para a data mais {i} informe \n")
-
-                data = []
-                for tempo in ['dia', 'mes', 'ano']:
-
-                    data.append(valida_data(tempo))
-
-                datas[i] = datetime.date(data[2], data[1], data[0])
-                
-            if not datas["antiga"]  <= datas["recente"]:
-                print("Periodo invalido")
-                return None
-                
-            ids = selecionar_id_registros(
-                lista_registro, datas["antiga"], datas["recente"])
-            
-            if len(ids)== 0:
-                print("Sem registros nesse periodo")
-                return None
-            
-            id = mostrar_registros(ids, lista_registro)
-            return id, operacao
-
-        else:
-            tentativas += 1
-
-            if tentativas == 3:
-                print("Você atingiu o número máximo de tentativas.")
+        try:
+            if operacao == '4':
                 encerrar_programa()
-            else:
+                break
+
+            elif operacao in registros_path:
+
+                lista_registro = ler_arquivo(registros_path[operacao])
+
+                if not lista_registro:
+
+                    print("Não há registros com esse tipo de operação! \n")
+                    return None
+
+                datas = dict()
+
                 print(
-                    f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
-                time.sleep(2)
+                    "Informe um intervalo de data em que a operação desejada pertence \n")
+
+                for i in ["antiga", "recente"]:
+
+                    print(f"\n Para a data mais {i} informe \n")
+
+                    data = []
+                    for tempo in ['dia', 'mes', 'ano']:
+
+                        data.append(valida_data(tempo))
+
+                    datas[i] = datetime.date(data[2], data[1], data[0])
+                    
+                if not datas["antiga"]  <= datas["recente"]:
+                    print("\n Periodo invalido")
+                    mensagem = "Pressione Enter para continuar... \n"
+                    input(mensagem)
+                    limpar_tela()
+
+                    return None
+                
+                ids = selecionar_id_registros(
+                    lista_registro, datas["antiga"], datas["recente"])
+                
+                if len(ids)== 0:
+                    print("\n Sem registros nesse periodo")
+                    mensagem = "Pressione Enter para continuar... \n"
+                    input(mensagem)
+                    limpar_tela()
+
+                    return None
+                
+                id = mostrar_registros(ids, lista_registro)
+                return id, operacao
+
+            else:
+                tentativas += 1
+
+                if tentativas == 3:
+                    print("Você atingiu o número máximo de tentativas.")
+                    encerrar_programa()
+                else:
+                    print(
+                        f"'{operacao}' Não é uma opção válida. Você tem mais {3 - tentativas} {'tentativa' if tentativas == 2 else 'tentativas'}.")
+                    time.sleep(2)
+
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
         
-
-
 def selecionar_id_registros(lista_registro, data_antiga, data_recente):
     """
     
@@ -124,7 +121,6 @@ def selecionar_id_registros(lista_registro, data_antiga, data_recente):
     registros_id = list(filter(lambda i: r(h(s(g(f(i))))), lista_len))
     return registros_id
 
-1
 def mostrar_registros(ids, lista_registro):
     """
 

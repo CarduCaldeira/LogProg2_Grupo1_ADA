@@ -24,8 +24,8 @@ def main():
     }
 
     while tentativas < max_tentativas:
-        #try:
-            #limpar_tela()
+        try:
+            limpar_tela()
             tracos()
             operacao = tela_inicial()
 
@@ -36,7 +36,7 @@ def main():
                 print(f"{operacao} não é uma opção válida. "
                       f"Você tem mais {max_tentativas - tentativas} tentativa{'s' if tentativas != max_tentativas - 1 else ''}.")
                 time.sleep(2)
-""" 
+
         except KeyboardInterrupt:
             print("\nOperação interrompida pelo usuário.")
             encerrar_programa()
@@ -47,7 +47,7 @@ def main():
     print("Você atingiu o número máximo de tentativas. Encerrando o programa.")
     time.sleep(2)
     encerrar_programa()
-"""
+
 
 
 if __name__ == "__main__":

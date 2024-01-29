@@ -1,48 +1,49 @@
+from atualizar_registro import mostrar_opcoes
+from utils import ler_arquivo
+import re
+from utils import limpar_tela
+
 def le_registro():
-
-  repeat_question = True
-
-  while repeat_question:
-    menu_leitura = input('''Menu de leitura de registros:
-                       
-                       [1] DESPESA
-                       [2] RECEITA
-                       [3] INVESTIMENTOS
-                       [4] CANCELAR
-                       
-                          Digite o numero da opção de deseja acessar: ''')
   
-    if menu_leitura not in ['1','2','3','4']:
-        print("Entrada invalida")
+    flag_mostra_opcao = mostrar_opcoes('LER')
 
-    elif menu_leitura == '1':
-        leitura_despesa()
+    if flag_mostra_opcao:
+        id, operacao = flag_mostra_opcao
 
-    elif menu_leitura == '2':
-        leitura_receita()
+        registros_path = {
+        '1': '../registros/registros_despesa.csv',
+        '2': '../registros/registros_receita.csv',
+        '3': '../registros/investimento.csv'}
+    
+        registros = ler_arquivo(registros_path[operacao])
+        
+        valor = registros[id][1]
+        data_str = registros[id][2]
+        
+        def s(data): return re.findall(r'\d+', data)
+        data = s(data_str)
+        
+        if operacao == '1':
+        
+            print(f"\n O registro escolhido é uma despesa no valor de {-float(valor)} reais na data:{data[0]}/{data[1]}/{data[2]} \n")
 
-    elif menu_leitura == '3':
-        leitura_investimentos()
+            mensagem = "Pressione Enter para continuar..."
+            input(mensagem)
+            limpar_tela
+        
+        elif operacao == '2':
 
+            print(f"\n O registro escolhido é uma receita no valor de {valor} reais na data:{data[0]}/{data[1]}/{data[2]} \n")
 
+            mensagem = "Pressione Enter para continuar..."
+            input(mensagem)
+            limpar_tela
 
+        elif operacao == '3':
 
-def leitura_despesa():
-    with open("../registros/registros_despesa.csv", "r") as arquivo:
-        linhas = arquivo.readlines()
-
-        for linha in linhas:
-            print(linha)
-
-def leitura_receita():
-   with open("../registros/registros_receita.csv", "r") as arquivo:
-      linhas = arquivo.readlines()
-
-      for linha in linhas:
-            print(linha)
-
-def leitura_investimentos():
-   with open("../registros/investimento.csv", "r") as arquivo:
-      
-        for linha in linhas:
-           print(linha)
+            print(f"\n O registro escolhido é um investimento no valor de {valor} reais na data:{data[0]}/{data[1]}/{data[2]},"
+                f"do tipo {registros[id][0].capitalize()}, com juros anual de {registros[id][5]} e lucro de {registros[id][5]} reais \n")
+            
+            mensagem = "Pressione Enter para continuar..."
+            input(mensagem)
+            limpar_tela

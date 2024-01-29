@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 import os
+from utils import limpar_tela
 
 #função será destinada para armazenar apenas os registros de receita.
 
@@ -16,10 +17,10 @@ def cria_registro_receita(flag_atualiza=None):
 
     data = determina_data()
 
-    registro = ['receita', receita, data, -1]
+    registro = ['receita', receita, data]
     
     if flag_atualiza.get('atualiza'):
-        atualiza_registro_receita(registro, flag_atualiza['id'])
+        atualiza_registro_receita(registro, flag_atualiza['id'], flag_atualiza['operacao'])
     else:
         salva_registro(registro)
 
@@ -69,24 +70,39 @@ def salva_registro(registro:list):
         registros_receita = csv.writer(file, delimiter=';', lineterminator='\n')
         registros_receita.writerow(registro)
     
-    print('Registro de receita salvo')
+    print('Registro de receita salvo ')
+    mensagem = "Pressione Enter para continuar... \n"
+    input(mensagem)
+    limpar_tela()
 
-def atualiza_registro_receita(registro, id):
+def atualiza_registro_receita(registro, id, operacao):
     """
     Recebe uma lista representando o registro com as suas 
     respectivas informações e salva no arquivo registros/registros.csv.
     """
 
-    with open('../registros/registros_receita.csv','r') as file:
+    registros_path = {
+        '1': '../registros/registros_despesa.csv',
+        '2': '../registros/registros_receita.csv',
+        '3': '../registros/investimento.csv'}
+
+    with open(registros_path[operacao],'r') as file:
 
         registros = list(csv.reader(file, delimiter=';', lineterminator='\n'))
         
-    registros[id] = registro
+    del registros[id] 
 
-    with open('../registros/registros_receita.csv','w') as file:
+    with open(registros_path[operacao],'w') as file:
 
         escritor = csv.writer(file, delimiter=';', lineterminator='\n')
         escritor.writerows(registros)
 
-    print('Registro atualizado')
+    with open('../registros/registros_receita.csv','a') as file:
 
+        escritor = csv.writer(file, delimiter=';', lineterminator='\n')
+        escritor.writerow(registro)
+
+    print('\n Registro atualizado \n')
+    mensagem = "\n Pressione Enter para continuar... \n"
+    input(mensagem)
+    limpar_tela()
