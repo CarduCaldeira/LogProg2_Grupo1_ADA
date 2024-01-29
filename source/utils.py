@@ -3,7 +3,7 @@ import sys
 import time
 from datetime import datetime
 import pyfiglet
-
+import csv
 
 def limpar_tela():
     """
@@ -35,7 +35,7 @@ def tracos():
 def tela_inicial():
     """Exibe a tela inicial e obtém a escolha do usuário.
     """
-    limpar_tela()
+    #limpar_tela()
 
     # Exibição do título usando pyfiglet
     f = pyfiglet.Figlet(font='big', justify='center')
@@ -134,3 +134,15 @@ def valida_data(tempo):
                 return data
             else:
                 print("Data invalida.")
+
+def ler_arquivo(path: str) -> list:
+    """Função que recebe o caminho do arquivo csv com os registros salvos 
+    e retorna uma lista com os registros salvos caso tal csv exista, 
+    caso contrario retorna None"""
+
+    if os.path.exists(path):
+            with open(path, 'r', newline='') as file:
+                registros = list(csv.reader(file, delimiter=';', lineterminator='\n'))
+            return registros
+    else:
+        return None
